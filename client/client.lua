@@ -98,8 +98,8 @@ Citizen.CreateThread(function() -- Thread for  timer
 end)
 
 -- F  U  N  C  T  I  O  N  S 
-function GetCar() return GetVehiclePedIsIn(GetPlayerPed(-1),false) end
-function GetPed() return GetPlayerPed(-1) end
+function GetCar() return GetVehiclePedIsIn(PlayerPedId(),false) end
+function GetPed() return PlayerPedId() end
 function text(x,y,scale,text)
     SetTextFont(0)
     SetTextProportional(0)
