@@ -73,7 +73,7 @@ Citizen.CreateThread(function()
 
         for k in pairs(fishloc) do
 		
-            local plyrefCoords = GetEntityCoords(GetPlayerPed(-1), false)
+            local plyrefCoords = GetEntityCoords(PlayerPedId(), false)
             local recfdist = Vdist(plyrefCoords.x, plyrefCoords.y, plyrefCoords.z, fishloc[k].x, fishloc[k].y, fishloc[k].z)
 			
             if recfdist <= 1.5 then
@@ -93,7 +93,7 @@ Citizen.CreateThread(function()
 
         for k in pairs(sellfishloc) do
 		
-            local plyrefCoords = GetEntityCoords(GetPlayerPed(-1), false)
+            local plyrefCoords = GetEntityCoords(PlayerPedId(), false)
             local recfSelldist = Vdist(plyrefCoords.x, plyrefCoords.y, plyrefCoords.z, sellfishloc[k].x, sellfishloc[k].y, sellfishloc[k].z)
 			
             if recfSelldist <= 1.5 then
@@ -146,18 +146,18 @@ AddEventHandler("esx-fish:packagePl",function()
 					while not HasAnimDictLoaded("anim@heists@box_carry@") do
 					Citizen.Wait(1)
 					end
-					TaskPlayAnim(GetPlayerPed(-1),"anim@heists@box_carry@","idle",1.0, -1.0, -1, 49, 0, 0, 0, 0)
+					TaskPlayAnim(PlayerPedId(),"anim@heists@box_carry@","idle",1.0, -1.0, -1, 49, 0, 0, 0, 0)
 					Citizen.Wait(300)
 						attachModel = GetHashKey('prop_rub_trolley03a')
 						boneNumber = 28422
-						SetCurrentPedWeapon(GetPlayerPed(-1), 0xA2719263) 
-						local bone = GetPedBoneIndex(GetPlayerPed(-1), boneNumber)
+						SetCurrentPedWeapon(PlayerPedId(), 0xA2719263) 
+						local bone = GetPedBoneIndex(PlayerPedId(), boneNumber)
 						RequestModel(attachModel)
 							while not HasModelLoaded(attachModel) do
 								Citizen.Wait(100)
 							end
 							attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-							AttachEntityToEntity(attachedProp, GetPlayerPed(-1), bone, 0.0, -0.25, -0.70, 0.0, 10.0, -90.0, 1, 1, 0, 0, 2, 1)
+							AttachEntityToEntity(attachedProp, PlayerPedId(), bone, 0.0, -0.25, -0.70, 0.0, 10.0, -90.0, 1, 1, 0, 0, 2, 1)
 							ESX.ShowNotification("Push the Trolley to storage!")
 end)
 
